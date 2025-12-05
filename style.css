@@ -4,10 +4,12 @@ body {
     display: flex;
     justify-content: center;
     padding-top: 40px;
+    margin: 0;
 }
 
 .container {
     width: 380px;
+    max-width: 95%;
     background: #fff;
     padding: 20px;
     border-radius: 10px;
@@ -17,38 +19,57 @@ body {
 h2 {
     text-align: center;
     margin-bottom: 15px;
+    color: #3c4a63;
 }
 
 .chat-box {
     height: 350px;
     overflow-y: auto;
     border: 1px solid #ccc;
-    padding: 10px;
+    padding: 15px;
     margin-bottom: 10px;
     border-radius: 8px;
     background: #fafafa;
     display: flex;
     flex-direction: column;
+    gap: 5px;
+    scroll-behavior: smooth;
+}
+
+.chat-box::-webkit-scrollbar {
+    width: 8px;
+}
+
+.chat-box::-webkit-scrollbar-thumb {
+    background: #bcbcbc;
+    border-radius: 10px;
+}
+
+.chat-box::-webkit-scrollbar-track {
+    background: #e8e8e8;
 }
 
 p {
-    padding: 8px 10px;
-    border-radius: 6px;
+    padding: 10px 12px;
+    border-radius: 8px;
     margin: 6px 0;
     max-width: 80%;
     word-wrap: break-word;
     font-size: 15px;
+    line-height: 1.3em;
 }
 
 .mensagem-user {
-    background: #d1e7ff;
+    background: #f7edf4;
     align-self: flex-end;
     text-align: right;
+    box-shadow: 0 0 3px rgba(0,0,0,0.1);
 }
 
 .mensagem-bot {
-    background: #d5f5d4;
+    background: #ad8aca;
     align-self: flex-start;
+    box-shadow: 0 0 3px rgba(0,0,0,0.1);
 }
 
 .area-input,
@@ -63,18 +84,32 @@ input {
     padding: 10px;
     border-radius: 6px;
     border: 1px solid #aaa;
+    background: #ffffff;
+    outline: none;
+    transition: 0.2s;
+}
+
+input:focus {
+    border-color: #ff4ebb;
+    box-shadow: 0 0 5px rgba(194, 51, 110, 0.3);
 }
 
 button {
     padding: 10px 15px;
     border: none;
-    background: #4e7fff;
+    background: #e23dc7;
     color: white;
     border-radius: 6px;
     cursor: pointer;
-    transition: 0.2s;
+    transition: background 0.2s, transform 0.1s;
+    font-weight: bold;
 }
 
 button:hover {
-    background: #2f5cff;
+    background: #ff2fd2;
 }
+
+button:active {
+    transform: scale(0.95);
+}
+
