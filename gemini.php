@@ -3,27 +3,28 @@ header("Content-Type: application/json");
 
 $mensagem = $_POST["mensagem"] ?? "";
 
-$api_key = "gen-lang-client-0980037362I";
+$api_key = "AIzaSyDxEhfIyUVaeq9U_XAXQVzdMcqY19JqqZU";
 
 $url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=$api_key";
 
-$prompt_iot= "
-Você é um assistente virtual que explica conceitos básicos de enfermagem com IoT.
-Fale de uma forma simples, como se estivesse falando para iniciantes.
-Dê exemplos praticos como: a internet das coisas está sendo usada no campo da enfermagem.
+$prompt_iot = "
+Você é um assistente virtual que explica conceitos básicos de enfermagem e IoT.
+Fale de forma simples, como para iniciantes.
+Dê exemplos práticos de como a Internet das Coisas é usada na enfermagem.
 
-Mensagem:  $mensagem
+Mensagem do usuário: $mensagem
 ";
 
 $data = [
     "contents" => [
         [
             "parts" => [
-                ["text" => $prompt]
+                ["text" => $prompt_iot]
             ]
         ]
     ]
 ];
+
 
 $ch = curl_init($url);
 curl_setopt($ch, CURLOPT_POST, true);
@@ -46,3 +47,4 @@ $resposta = $json["candidates"][0]["content"]["parts"][0]["text"]
     ?? "A IA não respondeu.";
 
 echo json_encode(["resposta" => $resposta]);
+
